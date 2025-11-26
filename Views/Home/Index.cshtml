@@ -1,0 +1,128 @@
+﻿
+
+@model IEnumerable<portafolio.Models.Project>
+
+<!-- HERO / INICIO -->
+<section id="inicio" class="section section-hero">
+    <div class="hero-container">
+        <img src="images/perfil_sarah.jpeg" alt="Foto de perfil" class="hero-img" />
+
+        <div class="hero-text">
+            <h1>Hola, soy <span>Sarah</span> 👋</h1>
+            <p>Desarrolladora .NET — apasionada por crear soluciones modernas y efectivas.</p>
+            <a href="#proyectos" class="btn-primary">Ver mis proyectos</a>
+        </div>
+    </div>
+</section>
+
+<!-- SOBRE MI -->
+<section id="sobre-mi" class="section section-about">
+    <h2>Sobre mí</h2>
+    <p>Soy desarrolladora enfocada en ASP.NET Core, MVC, Razor Pages y bases de datos. 
+        Me encanta crear interfaces limpias, modernas y funcionales.</p>
+</section>
+
+<!-- Habilidades -->
+<section id="habilidades" class="section section-skills">
+    <h2>Habilidades</h2>
+    
+    <div class="skills-grid">
+        
+        <div class="skill-card">
+            <span class="skill-name">C#</span>
+            <span class="skill-percent">90%</span>
+            <div class="skill-bar">
+                <div class="skill-bar-fill" style="width: 90%;"></div>
+            </div>
+        </div>
+        
+        <div class="skill-card">
+            <span class="skill-name">JavaScript</span>
+            <span class="skill-percent">60%</span>
+            <div class="skill-bar">
+                <div class="skill-bar-fill" style="width: 60%;"></div>
+            </div>
+        </div>
+        
+        <div class="skill-card">
+            <span class="skill-name">Python</span>
+            <span class="skill-percent">55%</span>
+            <div class="skill-bar">
+                <div class="skill-bar-fill" style="width: 55%;"></div>
+            </div>
+        </div>
+        
+        <div class="skill-card">
+            <span class="skill-name">HTML & CSS</span>
+            <span class="skill-percent">90%</span>
+            <div class="skill-bar">
+                <div class="skill-bar-fill" style="width: 90%;"></div>
+            </div>
+        </div>
+        
+        <div class="skill-card">
+            <span class="skill-name">SQL / NoSQL#</span>
+            <span class="skill-percent">70%</span>
+            <div class="skill-bar">
+                <div class="skill-bar-fill" style="width: 70%;"></div>
+            </div>
+        </div>
+
+
+    </div>
+</section>
+
+
+<!-- PROYECTOS -->
+<section id="proyectos" class="section section-projects">
+    <h2>Proyectos</h2>
+
+    <div class="projects-grid">
+        @foreach (var p in Model)
+        {
+            <div class="project-card">
+                <h3>@p.Title</h3>
+                <p>@p.Description</p>
+                <a href="@p.Link" class="btn-proyect" target="_blank">Ver proyecto</a>
+            </div>
+        }
+    </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto" class="section section-contact">
+    <h2>Contacto</h2>
+    <p class="contact-subtitle">
+        Gracias por visitar mi portafolio. Estoy lista para nuevos desafíos y oportunidades.
+    </p>
+    
+    @if (TempData["MensajeEnviado"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["MensajeEnviado"]
+        </div>
+    }
+
+    <div class="contact-card">
+        <form asp-controller="Home" asp-action="EnviarMensaje" method="post">
+
+            <label>Nombre</label>
+            <input type="text" name="Nombre" placeholder="Tu nombre" required />
+
+            <label>Correo electrónico</label>
+            <input type="email" name="Email" placeholder="tu@email.com" required />
+
+            <label>Mensaje</label>
+            <textarea name="Mensaje" placeholder="Tu mensaje..." rows="4" required></textarea>
+
+            <button type="submit" class="btn-contact">Enviar mensaje</button>
+        </form>
+    </div>
+
+    <!-- ICONOS REDES -->
+    <div class="contact-social">
+        <a href="https://github.com/Sarahorianna2006?tab=overview&from=2025-09-01&to=2025-09-30"><i class=""></i></a>
+        <a href="https://www.linkedin.com/in/sarah-p%C3%A9rez-085050399/"><i class=""></i></a>
+        <a href="#"><i class="fa-solid fa-envelope"></i></a>
+    </div>
+</section>
